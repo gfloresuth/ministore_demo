@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Mini Shop Product CRUD</title>        
+    </head>
+    <body>
+        <div>
+            Message: {{message}}<br>
+            {% if products is defined %}
+                <table>
+                <tr>
+                    <th>id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+                {% for product in products%}
+                    <tr>
+                        <td>{{product.id}}</td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.price}}</td>
+                        <td><a href="/product_crud/edit/{{product.id}}">Edit</a> <a href="/product_crud/delete/{{product.id}}">Delete<a></td>
+                    </tr>
+                {% endfor %}
+                </table>
+            {% endif%}
+        </div>
+    </body>
+</html>

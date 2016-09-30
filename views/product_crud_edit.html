@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Mini Shop</title>        
+    </head>
+    <body>
+        <div>
+            {% if user is defined %}
+            <a href="/logout/">Logout</a> | 
+            <a href="/product_crud/">Products</a>
+            <form method="post" action="/product_crud/edit/">
+                <input type="hidden" name="txtId" value ="{{product.id}}">
+                Name: <input type="text" name="txtName" value ="{{product.name}}"><br>
+                Price: <input type="text" name="txtPrice" value="{{product.price}}"><br>
+                <input type="submit" value="update">
+            </form>
+            {% else %}
+            <a href="/login/">Login</a>
+            {% endif %}
+
+        </div>
+    </body>
+</html>
