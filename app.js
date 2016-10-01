@@ -7,16 +7,8 @@ var FileStore = require('session-file-store')(session);
 
 const PORT = 3000;
 
-var dbConfig={
-    client:'mysql',
-    connection:{
-        host:'localhost',
-        user:'root',
-        password:'usbw',
-        database:'ministore',
-        charset:'utf8'
-    }
-};
+var dbConfig=require('./config/db_config.js');
+console.log(dbConfig);
 
 var knex = require('knex')(dbConfig);
 var bookshelf = require('bookshelf')(knex);
@@ -33,13 +25,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
+
+// bookshelf
 var bookshelf = app.get('bookshelf');
-var Product=bookshelf.Model.extend({
-	tableName:'product'
-});
-var User=bookshelf.Model.extend({
-	tableName:'user'
-});
+
+// Load modules
+var User_Model = require('./models/user_model.js');
+var Product_Model = require('./models/product_model.js');
+
+var User = new User_Model(bookshelf);
+var Product = new Product_Model(bookshelf);
+console.log(Product);
 
 app.use(function(err, req, res, next){
   console.error(err.stack);

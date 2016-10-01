@@ -17,6 +17,7 @@ module.exports.addController = function(app,options){
                     'user' : req.session.user,
                     'products' : products.toJSON()
                 };
+                console.log(info);
                 res.render('product_crud_list',info)
 
             }).catch(function(error){
