@@ -25,11 +25,15 @@ module.exports.addController = function(app,options){
         }*/
         new UserModel().where({'login':login,'pass':pass})
         .fetch()
-        .then(function(product){
-            if (product ==null){
+        .then(function(user){
+            if (user ==null){
                 res.render('login.html',{'txtUser':login});
             }else{
+                var userInfo = user.toJSON();
                 req.session.user = login;
+                // req.session.name = userInfo.name;
+
+
                 res.redirect('/');
             }
         }).catch(function(error){

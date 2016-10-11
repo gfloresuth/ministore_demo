@@ -1,4 +1,8 @@
+<!DOCTYPE html>
 <html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
     <head>
         <title>Mini Shop Product CRUD</title>        
     </head>
@@ -18,7 +22,7 @@
                         <td>{{product.id}}</td>
                         <td>{{product.name}}</td>
                         <td>{{product.price}}</td>
-                        <td><a href="/product_crud/edit/{{product.id}}">Edit</a> <a href="/product_crud/delete/{{product.id}}">Delete<a></td>
+                        <td><a class="w3-btn w3-purple w3-round-xxlarge" href="/product_crud/edit/{{product.id}}">Editar</a> <a href="/product_crud/delete/{{product.id}}">Delete<a></td>
                     </tr>
                 {% endfor %}
                 </table>

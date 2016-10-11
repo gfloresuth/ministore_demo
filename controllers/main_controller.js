@@ -1,4 +1,5 @@
 module.exports.addController = function(app,options){
+    // http://localhost:3000/
     app.get('/',function(req,res){
         var info = {};
         var session_exists = !(typeof req.session == 'undefined');

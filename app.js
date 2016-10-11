@@ -25,6 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
+app.use('/assets/',express.static(__dirname+"/public"));
 
 // bookshelf
 var bookshelf = app.get('bookshelf');
@@ -45,6 +46,7 @@ app.use(function(err, req, res, next){
 app.engine('html', require('atpl').__express);
 app.set('view engine','html');
 app.set('devel',false)
+
 var session_options={
   name: 'server-session-cookie-id',
   secret: 'my express secret',

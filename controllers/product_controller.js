@@ -10,6 +10,7 @@ module.exports.addController = function(app,options){
         if (session_exists==false){
             res.render('noaccess.html');
         }else{
+            // SELECT * FROM product
             new ProductModel().fetchAll().then(function(products){
                 var info={
                     'status':'ok',
@@ -17,7 +18,7 @@ module.exports.addController = function(app,options){
                     'user' : req.session.user,
                     'products' : products.toJSON()
                 };
-                console.log(info);
+                //console.log(info);
                 res.render('product_crud_list',info)
 
             }).catch(function(error){
@@ -41,6 +42,7 @@ module.exports.addController = function(app,options){
         }else{
             product_id = req.body.txtId;
             console.log(product_id);
+            // "SELECT * FROM product WHERE id=" + product_id
             new ProductModel().where({'id':product_id})
             .fetch()
             .then(function(product){
@@ -71,6 +73,7 @@ module.exports.addController = function(app,options){
             res.render('noaccess.html');
         }else{
             var product_id=req.params.id;
+            // "SELECT * FROM product WHERE id=" + product_id
             new ProductModel().where('id',product_id)
             .fetch()
             .then(function(product){
